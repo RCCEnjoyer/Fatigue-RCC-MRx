@@ -1,0 +1,6 @@
+setup.py
+fatigue.egg-info/PKG-INFO
+fatigue.egg-info/SOURCES.txt
+fatigue.egg-info/dependency_links.txt
+fatigue.egg-info/not-zip-safe
+fatigue.egg-info/top_level.txt
