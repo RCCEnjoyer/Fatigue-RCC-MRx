@@ -9,7 +9,7 @@ LONG_DESCRIPTION = ''
 setup(
        # the name must match the folder name 'verysimplemodule'
         name="fatrcc",
-        version="0.0.1",
+        version="0.0.3",
         author="Luis Angel Fernandez",
         author_email="<lafernandez@essbilbao.org>",
         description=DESCRIPTION,
