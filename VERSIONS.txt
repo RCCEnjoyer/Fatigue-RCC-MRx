@@ -12,7 +12,7 @@ Version 0.0.2 (14-03-2023):
 	- Updated output text: Gives number of lines (nodes), the maximum stress range (elastic), the maximum strain range (with components when estimated), the number of cycles and the location of the maximum
 	- New function added: It is possible to extract the file with the tensor range + von mises equivalent
 
-Version 0.0.3 (01-04-2024): 
+Version 0.0.3 (01-04-2024) - CURRENT: 
 
 	- Routines always report a strain/stress range. If values are outside of RCC tables, closest values are used
 	- Weld and fatigue reduction coefficients are now argumetns of the functions (Jf and f)
