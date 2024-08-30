@@ -12,6 +12,9 @@ import pandas as pd
 import numpy as np
 from scipy import interpolate
 
+from . import plot
+
+
 
 def f(x):
 
@@ -22,8 +25,6 @@ def f(x):
 
 def path_creator(filename):
 
-
-
     directory = os.path.dirname(__file__)
     return directory + "/materials/" + filename
 
@@ -32,7 +33,7 @@ def get_indexes(value, vector, magnitude, units):
     indexes = [0, 0]
 
     try:
-        indexes[0] = next(x[0] for x in enumerate(vector[1:-1]) if x[1] > value)
+        indexes[0] = next(x[0] for x in enumerate(vector[1:]) if x[1] > value)
     except:
         print("WARNING! "+ magnitude + " data out of range, curve taken for maximum" +
               " available: " + str(vector[-1]) + " " + units + " \n")
@@ -58,9 +59,9 @@ def fatigue_cycles (temperature, eps, material, Jf):
 
     Temps = [N_table.columns[T_index[0]], N_table.columns[T_index[1]]]
     eps_vector = [0] * len(N_table.iloc[:, T_index[0]]-1)
-
-    for i in range(len(N_table.iloc[:, T_index[0]])):
-        eps_temp = [N_table.iloc[i, T_index[0]], N_table.iloc[i, T_index[1]]]
+    
+    for i, value in enumerate(N_table.iloc[:, T_index[0]]):
+        eps_temp = [value, N_table.iloc[i, T_index[1]]]
         eps_vector[i] = np.interp(temperature, Temps, eps_temp)/Jf
 
     if eps < min(eps_vector):
@@ -74,6 +75,7 @@ def fatigue_cycles (temperature, eps, material, Jf):
         return N_table.iloc[1,0]
 
     result = interp_log10(eps, eps_vector, N_table['Unnamed: 0'])
+    plot.plot_SN_graph(N_table['Unnamed: 0'], eps_vector, eps, result)
 
     return result
 
@@ -124,10 +126,13 @@ def k_vol(temperature, stress_range, material):
 
     return float(k_vol_value)
 
-def E_module(a, b0, temperature):
-
-
-    return b0-a*temperature
+def E_properties(material, temperature):
+    
+    if material=="X2CrNiMo17":
+        E_module = 201660 - 84.8*temperature
+        poisson = 0.3
+    
+    return E_module, poisson
 
 def interp_log10(eps, datos_eps, datos_N):
 

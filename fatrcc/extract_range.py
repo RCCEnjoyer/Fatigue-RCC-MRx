@@ -12,8 +12,6 @@ import numpy as np
 
 def read_file(File):
 
-
-
     num_lines =  len(open(File).read().splitlines())
     print ('Reading file: ',File, ' ---> Number of lines:',num_lines)
 

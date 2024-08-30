@@ -12,18 +12,25 @@ Version 0.0.2 (14-03-2023):
 	- Updated output text: Gives number of lines (nodes), the maximum stress range (elastic), the maximum strain range (with components when estimated), the number of cycles and the location of the maximum
 	- New function added: It is possible to extract the file with the tensor range + von mises equivalent
 
-Version 0.0.3 (01-04-2024) - CURRENT: 
+Version 0.0.3 (01-04-2024): 
 
 	- Routines always report a strain/stress range. If values are outside of RCC tables, closest values are used
 	- Weld and fatigue reduction coefficients are now argumetns of the functions (Jf and f)
 	- Interpolation corrected for strain-cycles curve (logaritmic)
 	- Tutorial updated (Jf and f explanation included)
-	
+
+Version 0.0.4 (30-08-2024) - CURRENT:
+
+	- Temperature interpolation error corrected for highest temperature
+	- write_mesh_range function corrected
+	- Strain stress curves introduced for CuCrZr (RCC) and Glidcop Al15 (Argonne)
+	- Elastic properties introduced with a fuction for linear fatigue (more materials can be added)
+	- S-N interpolated curve for the required temperature is given
+	- Available now on GitHub
 	
 # TODO: Include eps2?
 # TODO: Include spline interpolation option for deformation curve as a function of the temperature
 # TODO: Do for other materials (data_sheets and generalize materials folder)
-# TODO: External elastic modulus
 # TODO: Include usage factor
 # TODO: Get usage factor for a given point
 # TODO: Read units of the tensor files
